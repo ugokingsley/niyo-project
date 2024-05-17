@@ -1,15 +1,19 @@
 ﻿# niyo-project
-Project Instruction
+Project Description
 
-1. Stack
+**1. About Project**
+   To demonstrate CRUD operations, the project consists of an Authentication system
+   and a Books Inventory Application with neccessary validations and user Authorization.
+
+**2. Stack**
    - Python (Django Framework)
    - Docker / Docker Compose
    - RabbitMQ (Event Streaming)
    - PostGreSQL
      
-2. Installation Instructions
+**3. Installation Instructions**
    - Download Docker here: https://www.docker.com/products/docker-desktop
    - clone this repo and in the project root go to your terminal and run this command:
      **docker-compose build** and  **docker-compose up -d** to run the container and services
    - Import Niyo_Group.postman_collection.json into POSTMAN to test APIs. View POSTMAN example files to
-     see success and failure responsed
+     see success and failure responses

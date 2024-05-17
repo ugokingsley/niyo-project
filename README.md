@@ -20,3 +20,4 @@ Project Description
      as seen in env.example file (DB credentials and Cloudampq credentials from **https://www.cloudamqp.com/**)
    - Import Niyo_Group.postman_collection.json into POSTMAN to test APIs. View POSTMAN example files to
      see success and failure responses
+   - see rabbitmq.png and docker.png images

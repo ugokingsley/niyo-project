@@ -4,6 +4,7 @@ from django.db import transaction
 from .models import *
 from datetime import datetime,timedelta
 from rest_framework.validators import UniqueTogetherValidator
+from django.core.exceptions import ValidationError
 
 
 class TaskManagerSerializer(serializers.ModelSerializer):
@@ -12,6 +13,16 @@ class TaskManagerSerializer(serializers.ModelSerializer):
         model = TaskManager
         fields = ['user', 'title', 'description', 'start_date', 'end_date', 'status', 'created_at', 'updated_at']
         
+        # checking to see that Task status is either of 'completed','active','pending'
+        def validate_status(validated_data):
+            if validated_data.get('status') not in ['completed','active','pending']:
+                raise ValidationError("Task status can only be 'completed','active','pending' ")
+
+        # checking to see that Task end_date is later than start_date
+        def validate_dates(validated_data):
+            if validated_data.get('start_date') > validated_data.get('end_date'):
+                raise ValidationError("start_date cannot be later than end_date")
+
         # validate the task oject
         # Make all fields required, dont allow submittion of empty fields
         extra_kwargs = {
@@ -28,5 +39,7 @@ class TaskManagerSerializer(serializers.ModelSerializer):
             UniqueTogetherValidator(
                 queryset=TaskManager.objects.all(),
                 fields=['title', 'start_date']
-            )
+            ),
+            validate_status,
+            validate_dates,
         ]

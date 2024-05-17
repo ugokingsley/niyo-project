@@ -499,7 +499,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Reading\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
+							"raw": "{\r\n    \"title\":\"Reading Text\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2020-04-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -844,6 +844,174 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"non_field_errors\": [\n        \"The fields title, start_date must make a unique set.\"\n    ]\n}"
+						},
+						{
+							"name": "Error -Invalid status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Reading\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/crud/tasks/",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"crud",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "gunicorn"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:58:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"non_field_errors\": [\n        \"Task status can only be 'completed','active','pending' \"\n    ]\n}"
+						},
+						{
+							"name": "Error - start date",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Reading Text\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-04-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/crud/tasks/",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"crud",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "gunicorn"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 May 2024 20:23:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"non_field_errors\": [\n        \"start_date cannot be later than end_date\"\n    ]\n}"
 						},
 						{
 							"name": "Success",
@@ -1304,14 +1472,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{dev_url}}/crud/tasks/2/",
+							"raw": "{{dev_url}}/crud/tasks/4/",
 							"host": [
 								"{{dev_url}}"
 							],
 							"path": [
 								"crud",
 								"tasks",
-								"2",
+								"4",
 								""
 							]
 						}
@@ -1403,7 +1571,7 @@
 							"body": "{\n    \"message\": \"No TaskManager matches the given query.\"\n}"
 						},
 						{
-							"name": "Success",
+							"name": "Error - wrong task status",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1415,7 +1583,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\":\"Reading Book\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
+									"raw": "{\r\n    \"title\":\"Reading Book\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active1\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1423,20 +1591,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/tasks/2/",
+									"raw": "{{dev_url}}/crud/tasks/4/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
 										"tasks",
-										"2",
+										"4",
 										""
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -1445,7 +1613,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 17 May 2024 19:27:02 GMT"
+									"value": "Fri, 17 May 2024 20:13:22 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1469,7 +1637,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "255"
+									"value": "80"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -1485,7 +1653,92 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"user\": \"ugokingsley5@gmail.com\",\n    \"title\": \"Reading Book\",\n    \"description\": \"The very Best is yet to come\",\n    \"start_date\": \"2024-03-24\",\n    \"end_date\": \"2020-04-24\",\n    \"status\": \"active\",\n    \"created_at\": \"2024-05-17T19:21:41.757816Z\",\n    \"updated_at\": \"2024-05-17T19:26:32.073055Z\"\n}"
+							"body": "{\n    \"non_field_errors\": [\n        \"Task status can only be 'completed','active','pending' \"\n    ]\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Reading Book\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/crud/tasks/4/",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"crud",
+										"tasks",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "gunicorn"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 May 2024 20:19:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task Updated Successfully\"\n}"
 						}
 					]
 				},

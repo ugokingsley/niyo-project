@@ -72,7 +72,7 @@ class TaskManagerViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(instance)
             super().update(request, *args, **kwargs)
             publish('Task Updated Successfully', serializer.data) # create a socket stream
-            return Response(serializer.data, status=status.HTTP_200_OK) # return task oject response
+            return Response({'message':'Task Updated Successfully'}, status=status.HTTP_200_OK) # return task oject response
     
     def destroy(self, request, *args, **kwargs):
         # Delete task by id created by a particular user 
@@ -84,5 +84,5 @@ class TaskManagerViewSet(viewsets.ModelViewSet):
         else:
             serializer = self.get_serializer(instance)
             instance.delete()
-            #publish('Task Deleted Successfully', serializer.data) # create a socket stream
+            publish('Task Deleted Successfully', serializer.data) # create a socket stream
             return Response({'message':'Task Deleted'}, status=status.HTTP_204_NO_CONTENT) # return task oject response

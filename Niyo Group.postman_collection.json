@@ -43,7 +43,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\":\"ugokingsley5@gmail.com\",\r\n    \"password\":\"grace_123\"\r\n}",
+									"raw": "{\r\n    \"email\":\"ugokingsley5@gmail.com\",\r\n    \"password\":\"grace_q123\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -487,7 +487,7 @@
 			"name": "CRUD API",
 			"item": [
 				{
-					"name": "Create Book",
+					"name": "Create Task",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -499,7 +499,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"The very Best\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"author\":\"ugo good\",\r\n    \"pages\":100\r\n}",
+							"raw": "{\r\n    \"title\":\"Reading\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -507,13 +507,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{dev_url}}/crud/books/",
+							"raw": "{{dev_url}}/crud/tasks/",
 							"host": [
 								"{{dev_url}}"
 							],
 							"path": [
 								"crud",
-								"books",
+								"tasks",
 								""
 							]
 						}
@@ -534,13 +534,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/",
+									"raw": "{{dev_url}}/crud/tasks/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
+										"tasks",
 										""
 									]
 								}
@@ -618,13 +618,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/",
+									"raw": "{{dev_url}}/crud/tasks/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
+										"tasks",
 										""
 									]
 								}
@@ -702,13 +702,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/",
+									"raw": "{{dev_url}}/crud/tasks/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
+										"tasks",
 										""
 									]
 								}
@@ -762,7 +762,7 @@
 							"body": "{\n    \"user\": [\n        \"This field is required.\"\n    ],\n    \"title\": [\n        \"This field is required.\"\n    ]\n}"
 						},
 						{
-							"name": "Error - title, author must make a unique set",
+							"name": "Error - Unique Fields",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -774,7 +774,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\":\"The very Best\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"author\":\"ugo good\",\r\n    \"pages\":100\r\n}",
+									"raw": "{\r\n    \"title\":\"Reading\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -782,13 +782,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/",
+									"raw": "{{dev_url}}/crud/tasks/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
+										"tasks",
 										""
 									]
 								}
@@ -798,12 +798,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:02:36 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:15:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -823,7 +827,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "73"
+									"value": "77"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -839,7 +843,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"non_field_errors\": [\n        \"The fields title, author must make a unique set.\"\n    ]\n}"
+							"body": "{\n    \"non_field_errors\": [\n        \"The fields title, start_date must make a unique set.\"\n    ]\n}"
 						},
 						{
 							"name": "Success",
@@ -854,7 +858,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\":\"The Best is still yet to come\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"author\":\"ugo good\",\r\n    \"pages\":100\r\n}",
+									"raw": "{\r\n    \"title\":\"Reading\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -862,13 +866,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/",
+									"raw": "{{dev_url}}/crud/tasks/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
+										"tasks",
 										""
 									]
 								}
@@ -878,12 +882,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:11:14 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:14:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -919,12 +927,12 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 201,\n    \"message\": [\n        \"Book Created Successfully\"\n    ]\n}"
+							"body": "{\n    \"status\": 201,\n    \"message\": [\n        \"Task Created Successfully\"\n    ]\n}"
 						}
 					]
 				},
 				{
-					"name": "List Books",
+					"name": "List Tasks",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -935,20 +943,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{dev_url}}/crud/books/",
+							"raw": "{{dev_url}}/crud/tasks/",
 							"host": [
 								"{{dev_url}}"
 							],
 							"path": [
 								"crud",
-								"books",
+								"tasks",
 								""
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Error - No Task",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -959,84 +967,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{dev_url}}/crud/books/",
+									"raw": "{{dev_url}}/crud/tasks/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
-										""
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:19:21 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept, origin"
-								},
-								{
-									"key": "Allow",
-									"value": "GET, POST, HEAD, OPTIONS"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "741"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"user\": \"ugokingsley5@gmail.com\",\n        \"title\": \"The Best is still yet to come\",\n        \"description\": \"The very Best is yet to come\",\n        \"author\": \"ugo good\",\n        \"publisher\": null,\n        \"pages\": 100,\n        \"created_at\": \"2024-05-16T14:11:14.985880Z\",\n        \"updated_at\": \"2024-05-16T14:11:14.985880Z\"\n    },\n    {\n        \"user\": \"ugokingsley5@gmail.com\",\n        \"title\": \"The Best is yet to come\",\n        \"description\": \"The very Best is yet to come\",\n        \"author\": \"ugo good\",\n        \"publisher\": null,\n        \"pages\": 100,\n        \"created_at\": \"2024-05-16T14:05:15.729528Z\",\n        \"updated_at\": \"2024-05-16T14:05:15.729528Z\"\n    },\n    {\n        \"user\": \"ugokingsley5@gmail.com\",\n        \"title\": \"The very Best\",\n        \"description\": \"The very Best is yet to come\",\n        \"author\": \"ugo good\",\n        \"publisher\": null,\n        \"pages\": 100,\n        \"created_at\": \"2024-05-16T14:04:23.527024Z\",\n        \"updated_at\": \"2024-05-16T14:04:23.527024Z\"\n    }\n]"
-						},
-						{
-							"name": "Error - user has no book",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt_token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{dev_url}}/crud/books/",
-									"host": [
-										"{{dev_url}}"
-									],
-									"path": [
-										"crud",
-										"books",
+										"tasks",
 										""
 									]
 								}
@@ -1046,12 +983,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:20:02 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:21:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -1087,12 +1028,87 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": [\n        \"User has no book yet\"\n    ]\n}"
+							"body": "{\n    \"message\": [\n        \"User has no task yet\"\n    ]\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{dev_url}}/crud/tasks/",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"crud",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "gunicorn"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:19:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "252"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"user\": \"ugokingsley5@gmail.com\",\n        \"title\": \"Reading\",\n        \"description\": \"The very Best is yet to come\",\n        \"start_date\": \"2024-03-24\",\n        \"end_date\": \"2020-04-24\",\n        \"status\": \"active\",\n        \"created_at\": \"2024-05-17T19:14:19.700698Z\",\n        \"updated_at\": \"2024-05-17T19:14:19.700710Z\"\n    }\n]"
 						}
 					]
 				},
 				{
-					"name": "Retreive Book",
+					"name": "Retreive Task",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1103,20 +1119,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{dev_url}}/crud/books/6",
+							"raw": "{{dev_url}}/crud/tasks/2",
 							"host": [
 								"{{dev_url}}"
 							],
 							"path": [
 								"crud",
-								"books",
-								"6"
+								"tasks",
+								"2"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Error - wrong task id",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -1127,84 +1143,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{dev_url}}/crud/books/6",
+									"raw": "{{dev_url}}/crud/tasks/6",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
-										"6"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:30:12 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept, origin"
-								},
-								{
-									"key": "Allow",
-									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "253"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"user\": \"ugokingsley5@gmail.com\",\n    \"title\": \"The Best is still yet to come\",\n    \"description\": \"The very Best is yet to come\",\n    \"author\": \"ugo good\",\n    \"publisher\": null,\n    \"pages\": 100,\n    \"created_at\": \"2024-05-16T14:29:57.532443Z\",\n    \"updated_at\": \"2024-05-16T14:29:57.532443Z\"\n}"
-						},
-						{
-							"name": "Error - No Book",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt_token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{dev_url}}/crud/books/6",
-									"host": [
-										"{{dev_url}}"
-									],
-									"path": [
-										"crud",
-										"books",
+										"tasks",
 										"6"
 									]
 								}
@@ -1214,12 +1159,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:36:23 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:22:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -1239,7 +1188,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "46"
+									"value": "53"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -1255,12 +1204,87 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"No Book matches the given query.\"\n}"
+							"body": "{\n    \"message\": \"No TaskManager matches the given query.\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{dev_url}}/crud/tasks/2",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"crud",
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "gunicorn"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:23:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"ugokingsley5@gmail.com\",\n    \"title\": \"Reading\",\n    \"description\": \"The very Best is yet to come\",\n    \"start_date\": \"2024-03-24\",\n    \"end_date\": \"2020-04-24\",\n    \"status\": \"active\",\n    \"created_at\": \"2024-05-17T19:21:41.757816Z\",\n    \"updated_at\": \"2024-05-17T19:21:41.757829Z\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Update - Book",
+					"name": "Update Task",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1272,7 +1296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"The Best is still yet to come yet for now\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"author\":\"ugo good\",\r\n    \"pages\":100\r\n}",
+							"raw": "{\r\n    \"title\":\"Reading Book\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1280,21 +1304,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{dev_url}}/crud/books/7/",
+							"raw": "{{dev_url}}/crud/tasks/2/",
 							"host": [
 								"{{dev_url}}"
 							],
 							"path": [
 								"crud",
-								"books",
-								"7",
+								"tasks",
+								"2",
 								""
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Error - No book with ID",
+							"name": "Error - wrong task ID",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1304,15 +1328,24 @@
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Reading\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/5/",
+									"raw": "{{dev_url}}/crud/tasks/7/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
-										"5",
+										"tasks",
+										"7",
 										""
 									]
 								}
@@ -1322,12 +1355,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:42:29 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:24:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -1347,7 +1384,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "46"
+									"value": "53"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -1363,7 +1400,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"No Book matches the given query.\"\n}"
+							"body": "{\n    \"message\": \"No TaskManager matches the given query.\"\n}"
 						},
 						{
 							"name": "Success",
@@ -1378,7 +1415,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\":\"The Best is still yet to come yet for now\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"author\":\"ugo good\",\r\n    \"pages\":100\r\n}",
+									"raw": "{\r\n    \"title\":\"Reading Book\",\r\n    \"description\":\"The very Best is yet to come\",\r\n    \"start_date\":\"2024-03-24\",\r\n    \"end_date\":\"2020-04-24\",\r\n    \"status\":\"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1386,14 +1423,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{dev_url}}/crud/books/7/",
+									"raw": "{{dev_url}}/crud/tasks/2/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
-										"7",
+										"tasks",
+										"2",
 										""
 									]
 								}
@@ -1403,12 +1440,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:47:03 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:27:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -1428,7 +1469,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "265"
+									"value": "255"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -1444,12 +1485,12 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"user\": \"ugokingsley5@gmail.com\",\n    \"title\": \"The Best is still yet to come yet for now\",\n    \"description\": \"The very Best is yet to come\",\n    \"author\": \"ugo good\",\n    \"publisher\": null,\n    \"pages\": 100,\n    \"created_at\": \"2024-05-16T14:44:12.146693Z\",\n    \"updated_at\": \"2024-05-16T14:46:52.745623Z\"\n}"
+							"body": "{\n    \"user\": \"ugokingsley5@gmail.com\",\n    \"title\": \"Reading Book\",\n    \"description\": \"The very Best is yet to come\",\n    \"start_date\": \"2024-03-24\",\n    \"end_date\": \"2020-04-24\",\n    \"status\": \"active\",\n    \"created_at\": \"2024-05-17T19:21:41.757816Z\",\n    \"updated_at\": \"2024-05-17T19:26:32.073055Z\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Delete - Book",
+					"name": "Delete - Task",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1460,13 +1501,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{dev_url}}/crud/books/7/",
+							"raw": "{{dev_url}}/crud/tasks/7/",
 							"host": [
 								"{{dev_url}}"
 							],
 							"path": [
 								"crud",
-								"books",
+								"tasks",
 								"7",
 								""
 							]
@@ -1474,9 +1515,9 @@
 					},
 					"response": [
 						{
-							"name": "Error  -  No book",
+							"name": "Error - wrong task ID",
 							"originalRequest": {
-								"method": "PUT",
+								"method": "DELETE",
 								"header": [
 									{
 										"key": "Authorization",
@@ -1485,14 +1526,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{dev_url}}/crud/books/5/",
+									"raw": "{{dev_url}}/crud/tasks/2/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
-										"5",
+										"tasks",
+										"2",
 										""
 									]
 								}
@@ -1502,12 +1543,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:51:37 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:28:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -1527,7 +1572,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "46"
+									"value": "53"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -1543,7 +1588,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"No Book matches the given query.\"\n}"
+							"body": "{\n    \"message\": \"No TaskManager matches the given query.\"\n}"
 						},
 						{
 							"name": "Success",
@@ -1557,14 +1602,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{dev_url}}/crud/books/7/",
+									"raw": "{{dev_url}}/crud/tasks/2/",
 									"host": [
 										"{{dev_url}}"
 									],
 									"path": [
 										"crud",
-										"books",
-										"7",
+										"tasks",
+										"2",
 										""
 									]
 								}
@@ -1574,12 +1619,16 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Date",
-									"value": "Thu, 16 May 2024 14:52:34 GMT"
+									"key": "Server",
+									"value": "gunicorn"
 								},
 								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.11.8"
+									"key": "Date",
+									"value": "Fri, 17 May 2024 19:29:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								},
 								{
 									"key": "Content-Type",
@@ -1615,7 +1664,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Book Deleted\"\n}"
+							"body": "{\n    \"message\": \"Task Deleted\"\n}"
 						}
 					]
 				}

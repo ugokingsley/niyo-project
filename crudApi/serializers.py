@@ -6,26 +6,27 @@ from datetime import datetime,timedelta
 from rest_framework.validators import UniqueTogetherValidator
 
 
-class BookSerializer(serializers.ModelSerializer):
+class TaskManagerSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.email')
     class Meta:
-        model = Book
-        fields = ['user', 'title', 'description', 'author', 'publisher', 'pages', 'created_at', 'updated_at']
+        model = TaskManager
+        fields = ['user', 'title', 'description', 'start_date', 'end_date', 'status', 'created_at', 'updated_at']
         
-        # validate the book oject
+        # validate the task oject
         # Make all fields required, dont allow submittion of empty fields
         extra_kwargs = {
             'title': {'required': True,'allow_blank':False},
             'description': {'required': True,'allow_blank':False},
-            'author': {'required': True, 'allow_blank':False},
-            'pages': {'required': True,}
+            'start_date': {'required': True},
+            'end_date': {'required': True},
+            'status': {'required': True, 'allow_blank':False},
         } 
 
-        # validate the book oject, make it unique to avoid repetition.
-        # No two books should have same title and author 
+        # validate the task object, make it unique to avoid repetition.
+        # No two tasks should have same title and start_date 
         validators = [
             UniqueTogetherValidator(
-                queryset=Book.objects.all(),
-                fields=['title', 'author']
+                queryset=TaskManager.objects.all(),
+                fields=['title', 'start_date']
             )
         ]

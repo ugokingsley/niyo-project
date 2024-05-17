@@ -2,6 +2,7 @@
 Project Description
 
 **1. About Project**
+
    To demonstrate CRUD operations, the project consists of an Authentication system
    and a Books Inventory Application with neccessary validations and user Authorization.
 

@@ -4,7 +4,7 @@ Project Description
 **1. About Project**
 
    To demonstrate CRUD operations, the project consists of an Authentication system
-   and a Books Inventory Application with neccessary validations and user Authorization.
+   and a Task Management Application with neccessary validations and user Authorization.
 
 **2. Stack**
    - Python (Django Framework)

@@ -5,11 +5,7 @@ RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 COPY . /niyo
 WORKDIR /niyo
 
-RUN python3 -m venv /opt/venv
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt 
 
-RUN /opt/venv/bin/pip install pip --upgrade && \
-    /opt/venv/bin/pip install -r requirements.txt && \
-    chmod +x entrypoint.sh
-
-CMD ["/niyo/entrypoint.sh"]
-
+COPY . .

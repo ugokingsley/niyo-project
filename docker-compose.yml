@@ -4,25 +4,30 @@ services:
     build: .
     image: app:niyo
     container_name: niyo_container
-    command: sh -c "chmod +x /niyo/migrate.sh && sh /niyo/migrate.sh && chmod +x /niyo/entrypoint.sh && sh /niyo/entrypoint.sh "
+    command: sh -c "python manage.py migrate && 
+                    gunicorn niyo.wsgi:application --workers 8 --threads 8 -t 120 --bind 0.0.0.0:8000"
+    restart: always
     ports:
       - "8001:8000"
     env_file:
       - .env
     depends_on:
-      - niyo_db
+      - db
     volumes:
       - .:/niyo
 
-  niyo_db:
-    container_name: niyo_db
+  db:
+    container_name: db
     image: postgres:14-alpine
+    environment:
+      - POSTGRES_DB=niyo_postgres
+      - POSTGRES_PASSWORD=grace_123
     restart: always
-    command: -p 5434
+    command: -p 5432
     env_file:
       - .env
     expose:
-      - 5434
+      - 5432
     ports:
       - "5432:5432"
     volumes:

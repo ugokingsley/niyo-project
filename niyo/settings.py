@@ -109,7 +109,7 @@ DATABASES = {
         'NAME': env('PGDB_NAME'),
         'USER': env('PGDB_USER'),
         'PASSWORD': env('PGDB_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': env('PGDB_HOST'),
         'PORT': env('PGDB_PORT'),
     }
 }
@@ -156,9 +156,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],

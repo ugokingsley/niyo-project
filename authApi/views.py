@@ -21,7 +21,7 @@ class RegisterView(GenericAPIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             user_data=serializer.data
-            publish('Registration Successful', serializer.data)
+            publish('Registration Successful', serializer.data) # create a socket stream
             return Response({
                 'data':user_data,
                 'message':'Thanks for signing up'
@@ -34,7 +34,7 @@ class LoginUserView(GenericAPIView):
     def post(self, request):
         serializer= self.serializer_class(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
-        publish('Login Successfully', serializer.data)
+        publish('Login Successfully', serializer.data) # create a socket stream
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

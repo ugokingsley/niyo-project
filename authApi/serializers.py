@@ -22,6 +22,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         model=User
         fields = ['email', 'first_name', 'last_name', 'password', 'password2']
 
+    # Validates password make sure that passwords match before submitting
     def validate(self, attrs):
         password=attrs.get('password', '')
         password2 =attrs.get('password2', '')
@@ -50,6 +51,7 @@ class LoginSerializer(serializers.ModelSerializer):
         model = User
         fields = ['email', 'password', 'full_name', 'access_token', 'refresh_token']
 
+    # validates login credentials, returns JWT access and refresh tokens upon login
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
@@ -80,6 +82,7 @@ class LogoutUserSerializer(serializers.Serializer):
 
         return attrs
 
+    # blackist JWT tokens upon logut to avoid reuse
     def save(self, **kwargs):
         try:
             token=RefreshToken(self.token)

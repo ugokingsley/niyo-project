@@ -25,6 +25,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
+    # Generate JWT access and refresh tokens upon user login
     def tokens(self):    
         refresh = RefreshToken.for_user(self)
         return {
@@ -32,10 +33,11 @@ class User(AbstractBaseUser, PermissionsMixin):
             "access":str(refresh.access_token)
         }
 
-
+    # a toSring method that returns an email of the user
     def __str__(self):
         return self.email
 
+    # method that returns full name - first name and last name
     @property
     def get_full_name(self):
         return f"{self.first_name.title()} {self.last_name.title()}"

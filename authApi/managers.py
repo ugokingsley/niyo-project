@@ -5,12 +5,16 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
+    # This manages user creation
+    # separate Admin users and others
+    # Validates User fields
     def email_validator(self, email):
         try:
             validate_email(email)
         except ValidationError:
             raise ValueError(_("please enter a valid email address"))
 
+    # Handles creation and Validation of Users
     def create_user(self, email, first_name, last_name, password, **extra_fields):
         if email:
             email = self.normalize_email(email)
@@ -26,6 +30,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    # Handles creation, Validation and Authorization of Admin Users
     def create_superuser(self, email, first_name, last_name, password, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)

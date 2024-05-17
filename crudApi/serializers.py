@@ -11,12 +11,18 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['user', 'title', 'description', 'author', 'publisher', 'pages', 'created_at', 'updated_at']
+        
+        # validate the book oject
+        # Make all fields required, dont allow submittion of empty fields
         extra_kwargs = {
             'title': {'required': True,'allow_blank':False},
             'description': {'required': True,'allow_blank':False},
             'author': {'required': True, 'allow_blank':False},
             'pages': {'required': True,}
         } 
+
+        # validate the book oject, make it unique to avoid repetition.
+        # No two books should have same title and author 
         validators = [
             UniqueTogetherValidator(
                 queryset=Book.objects.all(),
